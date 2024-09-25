@@ -21,7 +21,26 @@ export function validateWithZodSchema<T>(
   if (!result.success) {
     const errors = result.error.errors.map((error) => error.message);
 
-    throw new Error(errors.join(", "));
+    throw new Error(errors.join(","));
   }
   return result.data;
+}
+
+export const imageSchema = z.object({
+  image: validateFile(),
+});
+
+function validateFile() {
+  const maxUploadSize = 1024 * 1024;
+  const acceptedFilesType = ["image/"];
+  return z
+    .instanceof(File)
+    .refine((file) => {
+      return !file || file.size <= maxUploadSize;
+    }, "File size must be lss than 1 MB")
+    .refine((file) => {
+      return (
+        !file || acceptedFilesType.some((type) => file.type.startsWith(type))
+      );
+    }, "File must be an image");
 }
