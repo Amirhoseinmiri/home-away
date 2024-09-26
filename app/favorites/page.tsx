@@ -1,7 +1,14 @@
+import EmptyList from "@/components/home/EmptyList";
+import PropertiesList from "@/components/home/PropertiesList";
+import { fetchFavorites } from "@/utils/actions";
 import React from "react";
 
-const Favorites = () => {
-  return <div>Favorites</div>;
+const Favorites = async () => {
+  const favorites = await fetchFavorites();
+  if (!favorites) {
+    return <EmptyList />;
+  }
+  return <PropertiesList properties={favorites} />;
 };
 
 export default Favorites;
