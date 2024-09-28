@@ -29,7 +29,7 @@ const PropertyCard = ({ property }: { property: PropertyCardProps }) => {
             {name.substring(0, 30)}
           </h3>
           {/* property rating */}
-          <PropertyRaiting inPage={false} propertyId={propertyId} />
+          <PropertyRaiting inPage={false} />
         </div>
         <p className="text-sm mt-1 text-muted-foreground ">
           {tagline.substring(0, 40)}
