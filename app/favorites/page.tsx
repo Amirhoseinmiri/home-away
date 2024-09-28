@@ -5,7 +5,7 @@ import React from "react";
 
 const Favorites = async () => {
   const favorites = await fetchFavorites();
-  if (!favorites) {
+  if (favorites.length <= 0) {
     return <EmptyList />;
   }
   return <PropertiesList properties={favorites} />;
