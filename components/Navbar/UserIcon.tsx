@@ -7,7 +7,7 @@ const UserIcon = async () => {
   if (profileImage) {
     return (
       <img
-        src={profileImage}
+        src={profileImage.toString()}
         alt=""
         className="w-6 h-6 rounded-full object-cover"
       />
