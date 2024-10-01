@@ -12,6 +12,7 @@ const AdminPage = () => {
       <Suspense fallback={<StatsLoadingContainer />}>
         <StatsContainer />
       </Suspense>
+      {/**loading */}
       <Suspense fallback={<ChartsLoadingContainer />}>
         <ChartsContainer />
       </Suspense>
